@@ -60,6 +60,7 @@
                             echo '<option value="' . $key . '">' . $key . '</option>';
                         }
                         ?>
+                        <option value="UZS">UZS</option>
                     </select>
                 </div>
                 <div class="col-md-1 text-center">
