@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 
-require 'Currency.php';
+require 'src/Currency.php';
 
 $currency = new Currency();
 
