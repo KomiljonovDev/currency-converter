@@ -8,30 +8,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        .currency-card {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 30px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .currency-section {
-            padding: 60px 0;
-        }
-
-        .info-section {
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .btn-primary-custom {
-            background-color: #d32f2f;
-            border: none;
-        }
-    </style>
+    <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
 <div class="currency-section text-center pt-5 bg-primary-subtle">
@@ -45,18 +22,14 @@
             <div class="row g-3 align-items-center">
                 <div class="col-md-5">
                     <label for="amount" class="form-label visually-hidden">Amount</label>
-                    <input type="number" id="amount" class="form-control" placeholder="Amount" value="10000">
+                    <input type="number" id="amount" class="form-control" placeholder="Amount" value="10000" name="amount">
                 </div>
                 <div class="col-md-3 text-center">
                     <select class="form-select" name="from">
                         <?php
-                        global $currencies;
-                        //[
-                        //  'USD'=>12800,
-                        //  'EUR'=>13600,
-                        //  'RUB'=>125
-                        // ]
-                        foreach ($currencies as $key => $currency) {
+                        global $currency;
+                        $currencies = array_slice($currency->getCurrencies(), 0, 10);
+                        foreach ($currencies as $key => $currency_rate) {
                             echo '<option value="' . $key . '">' . $key . '</option>';
                         }
                         ?>
@@ -67,12 +40,27 @@
                     <span>⇆</span>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select">
+                    <select class="form-select" name="to">
                         <option>UZS</option>
+                        <?php
+                        foreach ($currencies as $key => $currency_rate) {
+                            echo '<option value="' . $key . '">' . $key . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
-            <p class="rate-info mt-2">1.00 USD = 12,862.73 UZS <i class="bi bi-info-circle"></i></p>
+            <p class="rate-info mt-2">
+                <?php
+
+                    if (isset($_GET['from']) && isset($_GET['to']) && isset($_GET['amount'])) {
+
+                        echo $currency->exchange($_GET['from'], $_GET['to'], (int)$_GET['amount']);
+
+                    }
+
+                ?>
+            </p>
             <button type="submit" class="btn btn-primary btn-primary-custom mt-3">Convert</button>
         </form>
     </div>

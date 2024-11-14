@@ -5,19 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <style>
-        .weather-card {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 8px;
-            background: #f8f9fa;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .weather-icon {
-            font-size: 4rem;
-        }
-    </style>
+    <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
 

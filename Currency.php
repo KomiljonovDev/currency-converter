@@ -18,10 +18,16 @@ class Currency{
         }
         return $separated_data;
     }
-    public function exchange ($value,$currency_name='USD') {
-        // sum -> usd
-        $round = $value / $this->getCurrencies()[$currency_name];
-        echo round($round,3) . ' ' . $currency_name;
+    public function exchange (string $from,string $to, int $amount) {
+        if ($from == $to){
+            return "Ikki valyuta har xil bo'lishi kerak";
+        }
+        if ($from == 'UZS'){
+            return $amount / (int)$this->getCurrencies()[$to];
+        }elseif ($to == 'UZS'){
+            return $amount * (int)$this->getCurrencies()[$from];
+        }
+        return "Ikkisidan biri o'zbek sumi bo'lishi shart";
     }
 }
 

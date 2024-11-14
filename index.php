@@ -1,14 +1,14 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
+
 require 'Currency.php';
 
 $currency = new Currency();
 
-$currencies = $currency->getCurrencies();
-print_r($currencies);
-
-
-require 'views/currency-converter.php';
+require 'resources/views/currency-converter.php';
 
 /*TODO
  * 1. Find an API
