@@ -9,16 +9,6 @@ class Bot {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         $response = curl_exec($ch);
         curl_close($ch);
-        var_dump($response);
+        return json_decode($response);
     }
 }
-$bot = new Bot();
-$bot->makeRequest('sendMessage', [
-    'chat_id'=>931026030,
-    'text'=>'Hello from Bot'
-]);
-$bot->makeRequest('sendVideo', [
-    'chat_id'=>931026030,
-    'video'=>'https://www.w3schools.com/html/mov_bbb.mp4'
-]);
-
