@@ -1,11 +1,15 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-
-require 'src/Currency.php';
-
-$currency = new Currency();
-
-require 'resources/views/currency-converter.php';
+if ($uri == '/weather') {
+    require 'resources/views/weather.php';
+}elseif ($uri == '/currency') {
+    require 'src/Currency.php';
+    $currency = new Currency();
+    require 'resources/views/currency-converter.php';
+}elseif ($uri == '/telegram') {
+    require 'app/bot.php';
+} else{
+    echo 404;
+}
