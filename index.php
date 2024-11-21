@@ -11,5 +11,5 @@ if ($uri == '/weather') {
 }elseif ($uri == '/telegram') {
     require 'app/bot.php';
 } else{
-    echo 404;
+    echo '404 page yoq';
 }

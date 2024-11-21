@@ -11,15 +11,29 @@ $currency = new Currency();
 $update = json_decode(file_get_contents('php://input'));
 
 if (isset($update)) {
-
-    $text = $update->message->text;
-    $from_id = $update->message->from->id;
+    $message = $update->message;
+    $from_id = $message->from->id;
+    $chatId = $message->chat->id;
+    $text = $message->text;
+    $user_name = $message->from->username;
 
     if ($text == '/start') {
+
+        $bot->saveUser($from_id, $user_name);
+        $reply_keyboard = [
+            'keyboard' => [
+                [
+                    ['text' => 'Ob havo'],
+                    ['text' => 'Valyuta'],
+                ]
+            ],
+            'resize_keyboard' => true, // Optional: Adjusts keyboard size
+        ];
         $response = $bot->makeRequest('sendMessage', [
             'chat_id' => $from_id,
             'text'=>"Hello World! <a href='https://core.telegram.org/bots/api#message'> dcndsjcjsd</a>",
-            'parse_mode' => 'html'
+            'parse_mode' => 'html',
+            'reply_markup' => $reply_keyboard
         ]);
 
         if (!$response->ok) {
@@ -28,6 +42,12 @@ if (isset($update)) {
                 'text'=>json_encode($response),
             ]);
         }
+    }
+    if ($text == 'Ob havo') {
+
+    }
+    if ($text == 'Valyuta') {
+
     }
     if ($text == '/currency') {
         $currencies = $currency->getCurrencies();
@@ -42,3 +62,6 @@ if (isset($update)) {
         ]);
     }
 }
+
+
+echo 'Ishladi';
