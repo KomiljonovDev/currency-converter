@@ -1,4 +1,9 @@
 <?php
+/*
+ * TODO
+ *  1. Replace CURL to Guzzle
+ *  2. Remove the API token, use dotenv package instead
+ */
 class Weather {
     const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Istanbul&appid=1f2c4527291b18aaab758440a1f8e071';
     public $weather_data = [];

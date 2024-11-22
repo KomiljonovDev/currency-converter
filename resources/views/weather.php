@@ -9,6 +9,10 @@
 </head>
 <body>
 <?php
+/*
+ * TODO
+ *  1. Move the required Weather class to the index file
+ */
 require "src/Weather.php";
 
 $weather = new Weather();
@@ -19,7 +23,9 @@ $weather = new Weather();
 
     <div class="weather-card text-center">
         <div class="mb-3">
-            <img id="weather-icon" src="<?php echo 'https://openweathermap.org/img/wn/' . $weather->getWeather()->weather[0]->icon .'@2x.png';?>" alt="Weather Icon" class="weather-icon">
+            <img id="weather-icon"
+                 src="<?php echo 'https://openweathermap.org/img/wn/' . $weather->getWeather()->weather[0]->icon . '@2x.png'; ?>"
+                 alt="Weather Icon" class="weather-icon">
         </div>
         <h2 class="mb-3" id="temperature">5°C</h2>
         <p id="description">Clear Sky</p>
@@ -27,7 +33,7 @@ $weather = new Weather();
         <div class="d-flex justify-content-around">
             <div>
                 <h5>Namlik</h5>
-                <p id="feels-like"><?php echo $weather->getWeather()->main->temp;?></p>
+                <p id="feels-like"><?php echo $weather->getWeather()->main->temp; ?></p>
             </div>
             <div>
                 <h5>Bosim</h5>
@@ -40,7 +46,10 @@ $weather = new Weather();
         </div>
     </div>
 </div>
-
+<!--
+TODO
+    1. Remove the unused script
+-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

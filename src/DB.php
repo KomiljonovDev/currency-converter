@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * TODO
+ *  1. Remove database credentials, use dotenv package instead
+ */
 class DB {
     public $host = "localhost";
     public $user = "root";

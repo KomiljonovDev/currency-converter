@@ -13,3 +13,13 @@ if ($uri == '/weather') {
 } else{
     echo '404 page yoq';
 }
+
+
+/*TODO
+ * 1. Replace all the required autoload files with one
+ * 2. Replace currency-converter view file to currency
+ * 3. Move the required Weather class to the index file
+ * 4. Remove the duplicated ini_set() functions
+ * 5.
+ */
+
